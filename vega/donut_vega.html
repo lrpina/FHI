@@ -14,16 +14,27 @@
         height: 20px;
         background: white;
       }
-      #view { margin-top: 40px; }
+      #view0, #view1, #view2, #view3 { margin-top: 40px; width:25%;}
       canvas, svg { border: 1px dashed #ccc; }
       .vega-bind { line-height: 18px; margin-bottom: 2px; }
       .vega-bind-name { display: inline-block; width: 100px; }
       .vega-bind input[type="range"] { width: 400px; }
       .vega-bind label { margin: 0 0.5em 0 2px; }
+      .canvas-holder1 {
+    	display: inline-block;
+    	margin: 10%;
+      }
+      .canvas-holder2 {
+    	display: inline-block;
+    	margin: 10%
+      }
     </style>
   </head>
   <body>
-    <div id="view"></div>
+    <div class="canvas-holder1" id="view0"></div>
+    <div class="canvas-holder1" id="view1"></div>
+    <div class="canvas-holder2" id="view2"></div>
+    <div class="canvas-holder2" id="view3"></div>
     
     <script>
 
@@ -132,22 +143,59 @@ var runtimeSpec = vega.parse(
 }
 );
 
-// draw donut 
+// draw donuts 
 var view = new vega.View(runtimeSpec)
-  .initialize(document.querySelector('#view'))
+  .initialize(document.querySelector('#view0'))
+  .hover()
+  .run();
+
+var view = new vega.View(runtimeSpec)
+  .initialize(document.querySelector('#view1'))
+  .hover()
+  .run();
+
+var view = new vega.View(runtimeSpec)
+  .initialize(document.querySelector('#view2'))
+  .hover()
+  .run();
+
+var view = new vega.View(runtimeSpec)
+  .initialize(document.querySelector('#view3'))
   .hover()
   .run();
   
-// draw image in the middle of donut
-var canvas = document.getElementsByClassName("marks")[0],
-context = canvas.getContext('2d');
-
-base_image = new Image();
-base_image.src = imgURL;
-base_image.onload = function() {
-	context.drawImage(base_image, 150,150,100,100);
+// draw images in the middle of donuts
+var canvas0 = document.getElementsByClassName("marks")[0],
+context0 = canvas0.getContext('2d');
+base_image0 = new Image();
+base_image0.src = imgURL;
+base_image0.onload = function() {
+	context0.drawImage(base_image0, 150,150,100,100);
 }
- 
+
+var canvas1 = document.getElementsByClassName("marks")[1],
+context1 = canvas1.getContext('2d');
+base_image1 = new Image();
+base_image1.src = imgURL;
+base_image1.onload = function() {
+	context1.drawImage(base_image1, 150,150,100,100);
+}
+
+var canvas2 = document.getElementsByClassName("marks")[2],
+context2 = canvas2.getContext('2d');
+base_image2 = new Image();
+base_image2.src = imgURL;
+base_image2.onload = function() {
+	context2.drawImage(base_image2, 150,150,100,100);
+}
+
+var canvas3 = document.getElementsByClassName("marks")[3],
+context3 = canvas3.getContext('2d');
+base_image3 = new Image();
+base_image3.src = imgURL;
+base_image3.onload = function() {
+	context3.drawImage(base_image3, 150,150,100,100);
+}
 
     </script>
   </body>
