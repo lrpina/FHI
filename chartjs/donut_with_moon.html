@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FHI</title>
+    <script src="chartjs/chart.js/dist/Chart.bundle.js"></script>
+    <script src="chartjs/chart.js/samples/utils.js"></script>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+
+    <script src="donut_with_moon.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    .container {
+    	display: block;
+    	margin-left: auto;
+    	margin-right: auto 
+    }
+    #middle {height:250px}
+
+	#face {visibility: hidden;}
+	
+	#moon_img {display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width:45%;
+    height:45%;
+    margin-top: 250px;
+    }
+
+
+    </style>
+</head>
+<body>
+
+	<h2>Family Daily</h2>
+    
+	<div class="container">
+  		<div class="row">
+  			<div class="col-sm-4">
+				<canvas id="chart-area1"></canvas>
+				<canvas id="chart-area3"></canvas>
+			</div>
+			
+  			<div class="col-sm-4">
+  				<div id="CrescentMoon"></div>
+  				<!-- 
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+					<defs>
+						<linearGradient y2="0%" x2="100%" y1="0%" x1="0%" id="F1g">
+							<stop stop-color="#00FF00" offset="35%" id="F1gst1"/>
+							<stop stop-color="#FFFFFF" offset="0%" id="F1gst2"/>
+						</linearGradient>
+					</defs>
+					<path d="M200 25A60 60 0 1 0 200 110 45 45 0 1 1 200 25z" stroke="black" stroke-width="2" fill="rgb(22,212,255)"/>   
+
+				</svg> 
+ -->
+  			</div>
+  			<div class="col-sm-4">
+				<canvas id="chart-area2"></canvas>
+				<canvas id="chart-area4"></canvas>
+			</div>
+  		</div>
+  	</div>
+</body>
+</html>
