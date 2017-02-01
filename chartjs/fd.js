@@ -11,8 +11,7 @@
 					{"Name": "User 2", "Age": 10, "targetHours": 10, "pic": "moods/user.png"}, 
 					{"Name": "User 3", "Age": 7, "targetHours": 10, "pic": "moods/user.png"}];
 	
-	var user_hasClicked, // array of whether or not user has clicked on a mood
-		user_moods, // array of moods that users select
+	var	user_moods, // array of moods that users select
 		user_data; // array of user's fitbit data
 
 	window.onload = function() {
@@ -42,7 +41,6 @@
 	};
 	
 	function resetForNewDay() {
-		user_hasClicked = [0,0,0,0]; 
 		user_moods = [null, null, null, null];
 		user_data=[null, null, null, null];
 	}
@@ -99,12 +97,11 @@
 
 	function initiate(i, m) {
 		console.log("Today, index " + i + " is " + m);
-		user_hasClicked[i] = 1;
 		user_moods[i] = m;
 		getData(i);
 		
 		// draw chart for the user index i
-		if (user_hasClicked[i] == 1 && user_data[i]) {
+		if (user_data[i]) {
 			console.log("index " + i + " and mood " + user_moods[i] +" has been clicked");
 			updateText(i);
 			makeChart(i);
@@ -116,9 +113,9 @@
 	// called when page is refreshed
 	function populateCharts() {
 		// iterate through all indices in the array
-		// if index = true, then makeChart
-		for (var i = 0; i < user_hasClicked.length; i++) {		
-			if (user_hasClicked[i] == 1 && user_data[i]) {
+		// if data is present, then makeChart
+		for (var i = 0; i < 4; i++) {		
+			if (user_data[i]) {
 				console.log("index " + i + " and mood " + user_moods[i] +" has been clicked");
 				updateText(i);
 				makeChart(i);
@@ -240,7 +237,7 @@
 		moon_section.innerHTML = "";
 		for (var i = 0; i < 4; i++) {
 			total_targetHours += user_info[i].targetHours;
-			if (user_hasClicked[i])
+			if (user_data[i])
 				total_mins += user_data[i].minutesAsleep;
 		}
 
