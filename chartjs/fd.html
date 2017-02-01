@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FHI</title>
+	
+	<link rel="shortcut icon" href="">
+	<script src="chartjs/chart.js/dist/Chart.bundle.js"></script>
+    <script src="chartjs/chart.js/samples/utils.js"></script>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+   
+
+    <script src="fd.js"></script>
+    <style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+    .container {
+    	display: block;
+    	margin-left: auto;
+    	margin-right: auto 
+    	max-width: none !important;
+ 		width: 1100px;
+    }
+    #middle {height:250px}
+	
+	#moon_img {
+		width:110px;
+		height:150px;
+/* 		margin-top: 200px; */
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+    }
+    
+    .user-section {
+    	width:300px;
+    	height:300px;
+    }
+    .chart-section {
+    	width:175px;
+    	height:100%;
+    	float:left;
+    }
+    
+    #CrescentMoon {
+    	height: 600px;
+    }
+    
+    #family-sleep-goal {
+    	width: 245px;
+    	height: 40px;
+    	text-align: center;
+    	margin-bottom: 10px;
+    }
+    
+	.modal-content {
+    	width: 350px;
+    }
+    
+    .user {
+    	height: 120px;
+    	width: 300px;
+    }
+    
+    .user-info {
+    	width: 225px;
+    	height: 100%;
+    	float: left;
+    	position:relative;
+    }
+    
+    .userpic {
+    	height: 75px;
+    	width: 75px;
+    	float: left;
+    }
+
+    .hours-slept {
+    	width: calc(100% - 175px);
+    	height: 100%;
+		float: left;
+    }
+    .hours_slept_text {
+    	width: 200px;
+    	margin: 30px 0 0 70px;
+    }
+    
+    .howdoyoufeel {
+    	width: 125px;
+    	height: 125px;
+    	display: block;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 10px;
+    }			
+    
+    .chart {
+    	width: 300px;
+    	height: 175px;
+    }
+
+
+    </style>
+</head>
+<body>
+
+	<h2>Family Daily</h2>
+    
+	<div class="container">
+  		<div class="row">
+  			<div class="col-sm-4">
+ 				<div class="user-section" id="user-section0">
+ 					<div class="user" id="user0">
+ 						<div class="userpic" id="userpic0">
+ 						</div>
+ 						<div class="user-info" id="user-info0">
+ 						</div>
+ 					</div>
+ 					<div class="chart" id="chart0">
+ 						<div class="hours-slept" id="hours-slept0">
+ 							<p class="hours_slept_text" id="hours_slept_text0">Hours slept:<br></p>
+ 						</div>
+						<div class="chart-section" id="chart-section0">
+							<img src="moods/howdoyoufeel.png" class="howdoyoufeel" data-toggle = "modal" data-target = "#moods0">
+							<!-- Modal -->
+							<div class = "modal fade" id = "moods0" tabindex = "-1" role = "dialog" 
+							   aria-labelledby = "myModalLabel" aria-hidden = "true">
+							   <div class = "modal-dialog">
+								  <div class = "modal-content">
+									 <div class = "modal-header">
+										<button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+											  &times;
+										</button>
+										<h4 class = "modal-title" id = "myModalLabel">
+										   How do you feel this morning?
+										</h4>
+									 </div>
+									 <div class = "modal-body">
+										<img src="moods/nightmare.png" class="img-polaroid" id="nightmare0">
+										<img src="moods/okay.png" class="img-polaroid" id="okay0">
+										<img src="moods/rested.png" class="img-polaroid" id="rested0">
+										<img src="moods/tired.png" class="img-polaroid" id="tired0">
+									 </div>
+								  </div> <!-- /.modal-content -->
+							   </div> <!-- /.modal-dialog -->
+							</div> <!-- /.modal -->
+						</div> <!-- /.chart-section -->
+					</div> <!-- /.chart -->
+ 				</div>
+ 				<div class="user-section" id="user-section2">
+ 					<div class="user" id="user2">
+ 						<div class="userpic" id="userpic2">
+ 						</div>
+ 						<div class="user-info" id="user-info2">
+ 						</div>
+ 					</div>
+ 					<div class="chart" id="chart2">
+ 						<div class="hours-slept" id="hours-slept2">
+ 							<p class="hours_slept_text" id="hours_slept_text2">Hours slept:<br></p>
+ 						</div>
+						<div class="chart-section" id="chart-section2">
+							<img src="moods/howdoyoufeel.png" class="howdoyoufeel" data-toggle = "modal" data-target = "#moods2">
+							<!-- Modal -->
+							<div class = "modal fade" id = "moods2" tabindex = "-1" role = "dialog" 
+							   aria-labelledby = "myModalLabel" aria-hidden = "true">
+							   <div class = "modal-dialog">
+								  <div class = "modal-content">
+									 <div class = "modal-header">
+										<button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+											  &times;
+										</button>
+										<h4 class = "modal-title" id = "myModalLabel">
+										   How do you feel this morning?
+										</h4>
+									 </div>
+									 <div class = "modal-body">
+										<img src="moods/nightmare.png" class="img-polaroid" id="nightmare2">
+										<img src="moods/okay.png" class="img-polaroid" id="okay2">
+										<img src="moods/rested.png" class="img-polaroid" id="rested2">
+										<img src="moods/tired.png" class="img-polaroid" id="tired2">
+									 </div>
+								  </div> <!-- /.modal-content -->
+							   </div> <!-- /.modal-dialog -->
+							</div> <!-- /.modal -->
+						</div> <!-- /.chart-section -->
+					</div> <!-- /.chart -->
+ 				</div>
+			</div>
+			
+<!--Moon--> <div class="col-sm-3" style="padding-top:150px;">
+				<div id="family-sleep-goal"></div>
+  				<div id="CrescentMoon"><img src="moon/Slice0.png" id="moon_img"></div>
+  			</div>
+  			
+  			<div class="col-sm-4">
+ 				<div class="user-section" id="user-section1">
+ 					<div class="user" id="user1">
+ 						<div class="userpic" id="userpic1">
+ 						</div>
+ 						<div class="user-info" id="user-info1">
+ 						</div>
+ 					</div>
+ 					<div class="chart" id="chart1">
+ 						<div class="hours-slept" id="hours-slept1">
+ 							<p class="hours_slept_text" id="hours_slept_text1">Hours slept:<br></p>
+ 						</div>
+						<div class="chart-section" id="chart-section1">
+							<img src="moods/howdoyoufeel.png" class="howdoyoufeel" data-toggle = "modal" data-target = "#moods1">
+							<!-- Modal -->
+							<div class = "modal fade" id = "moods1" tabindex = "-1" role = "dialog" 
+							   aria-labelledby = "myModalLabel" aria-hidden = "true">
+							   <div class = "modal-dialog">
+								  <div class = "modal-content">
+									 <div class = "modal-header">
+										<button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+											  &times;
+										</button>
+										<h4 class = "modal-title" id = "myModalLabel">
+										   How do you feel this morning?
+										</h4>
+									 </div>
+									 <div class = "modal-body">
+										<img src="moods/nightmare.png" class="img-polaroid" id="nightmare1">
+										<img src="moods/okay.png" class="img-polaroid" id="okay1">
+										<img src="moods/rested.png" class="img-polaroid" id="rested1">
+										<img src="moods/tired.png" class="img-polaroid" id="tired1">
+									 </div>
+								  </div> <!-- /.modal-content -->
+							   </div> <!-- /.modal-dialog -->
+							</div> <!-- /.modal -->
+						</div> <!-- /.chart-section -->
+					</div> <!-- /.chart -->
+ 				</div><!-- user-section -->
+ 				<div class="user-section" id="user-section3">
+ 					<div class="user" id="user3">
+ 						<div class="userpic" id="userpic3">
+ 						</div>
+ 						<div class="user-info" id="user-info3">
+ 						</div>
+ 					</div>
+ 					<div class="chart" id="chart3">
+ 						<div class="hours-slept" id="hours-slept3">
+ 							<p class="hours_slept_text" id="hours_slept_text3">Hours slept:<br></p>
+ 						</div>
+						<div class="chart-section" id="chart-section3">
+							<img src="moods/howdoyoufeel.png" class="howdoyoufeel" data-toggle = "modal" data-target = "#moods3">
+							<!-- Modal -->
+							<div class = "modal fade" id = "moods3" tabindex = "-1" role = "dialog" 
+							   aria-labelledby = "myModalLabel" aria-hidden = "true">
+							   <div class = "modal-dialog">
+								  <div class = "modal-content">
+									 <div class = "modal-header">
+										<button type = "button" class = "close" data-dismiss = "modal" aria-hidden = "true">
+											  &times;
+										</button>
+										<h4 class = "modal-title" id = "myModalLabel">
+										   How do you feel this morning?
+										</h4>
+									 </div>
+									 <div class = "modal-body">
+										<img src="moods/nightmare.png" class="img-polaroid" id="nightmare3">
+										<img src="moods/okay.png" class="img-polaroid" id="okay3">
+										<img src="moods/rested.png" class="img-polaroid" id="rested3">
+										<img src="moods/tired.png" class="img-polaroid" id="tired3">
+									 </div>
+								  </div> <!-- /.modal-content -->
+							   </div> <!-- /.modal-dialog -->
+							</div> <!-- /.modal -->
+						</div> <!-- /.chart-section -->
+					</div> <!-- /.chart -->
+ 				</div><!-- user-section -->
+			</div>
+  		</div>
+  	</div>
+</body>
+</html>
